@@ -11,6 +11,11 @@
     </style>
 </head>
 <body>
+{% for message in app.flashes('message') %}
+    <h2 class="flash-notice">
+        {{message}}
+    </h2>
+{% endfor %}
     <form action="/add" method="post">
         <div>
             <label>Marca</label><lr>

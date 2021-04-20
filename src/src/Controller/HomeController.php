@@ -39,7 +39,8 @@ class HomeController extends AbstractController
 
         $carro = new Carro($marca, $modelo, $preco);
         $carroRepository->save($carro);
-        
+
+        $this->addFlash("message", "Ok, deu certo");
         return $this->redirectToRoute("home");
     }
 }
