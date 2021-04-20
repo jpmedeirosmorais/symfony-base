@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Livro;
+use App\Entity\Carro;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,12 +15,12 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $cleanCode = new Livro("Clean Code", 200, 130.40);
-        $ddd = new Livro("Domain Driven Design", 700, 530.40);
-        $livros = [$cleanCode, $ddd];
+        $gol = new Carro("VolwksWagem", "Gol", 48000);
+        $uno = new Carro("Fiat", "Uno", 56000);
+        $carros = [$gol, $uno];
 
         return $this->render('home/index.html.twig', [
-            "livros" => $livros
+            "carros" => $carros
         ]);
     }
 }
