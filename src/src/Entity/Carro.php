@@ -3,9 +3,10 @@
 
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CarroRepository;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass = CarroRepository::class)
  * @ORM\Table(name="carro")
  */
 
@@ -14,7 +15,7 @@ class Carro
 {
     /**
      * @ORM\Id
-     * @ORM\Comumn(type = "integer")
+     * @ORM\Column(type = "integer")
      * @ORM\GeneratedValue
      */
     private int $id;
@@ -24,8 +25,8 @@ class Carro
 
     /** @ORM\Column(type = "string" , nullable=false) */
     private string $modelo;
-    
-    /** @ORM\Column(type = "decimal", nullable=false) */
+
+    /** @ORM\Column(type = "decimal", scale =2, nullable=false) */
     private float $preco;
 
     /**
