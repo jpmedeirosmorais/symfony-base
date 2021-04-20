@@ -14,13 +14,17 @@ class Carro
 {
     /**
      * @ORM\Id
+     * @ORM\Comumn(type = "integer")
      * @ORM\GeneratedValue
      */
     private int $id;
+
     /** @ORM\Column(type = "string" , nullable=false) */
     private string $marca;
+
     /** @ORM\Column(type = "string" , nullable=false) */
     private string $modelo;
+    
     /** @ORM\Column(type = "decimal", nullable=false) */
     private float $preco;
 
