@@ -33,4 +33,3 @@ final class Version20210420182358 extends AbstractMigration
         $this->addSql('ALTER TABLE carro CHANGE preco preco NUMERIC(10, 0) NOT NULL');
     }
 }
-mil

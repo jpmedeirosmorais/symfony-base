@@ -23,4 +23,13 @@ class CarroRepository extends ServiceEntityRepository
         $em->commit();
         $em->flush();
     }
+
+    public function remove(Carro $carro)
+    {
+        $em=$this->getEntityManager();
+        $em->beginTransaction();
+        $em->remove($carro);
+        $em->commit();
+        $em->flush();
+    }
 }

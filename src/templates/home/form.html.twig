@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carros mais baratos -por mais que pareça mentira- do Brasil</title>
+    <style>
+
+    </style>
+</head>
+<body>
+{% for message in app.flashes('message') %}
+    <h2>
+        {{ message }}
+    </h2>
+{% endfor %}
+<form action="{{ path('editar_save', { 'id' : carro.id }) }}" method="post">
+    <div>
+        <label>Marca do carro</label>
+        <input type="text" name="marca" value="{{ carro.marca }}"/>
+    </div>
+    <div>
+        <label>Modelo do carro</label>
+        <input type="text" name="modelo" value="{{ carro.modelo }}"/>
+    </div>
+    <div>
+        <label>Preço do carro</label>
+        <input type="number" name="preco" value="{{ carro.preco }}"/>
+    </div>
+    <div>
+        <input type="submit" value="Editar"/>
+    </div>
+</form>
+</body>
+</html>
