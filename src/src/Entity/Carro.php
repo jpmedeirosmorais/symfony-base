@@ -1,18 +1,17 @@
 <?php
 
-
 namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CarroRepository;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass = CarroRepository::class)
  * @ORM\Table(name="carro")
+ * @UniqueEntity("modelo")
  */
-
-
 class Carro
 {
     /**
@@ -35,7 +34,7 @@ class Carro
     private string $marca;
 
     /**
-     * @ORM\Column(type = "string" , nullable=false)
+     * @ORM\Column(type = "string" , nullable=false, unique = true)
      * @Assert\NotBlank
      * @Assert\Length(
      *      min = 2,

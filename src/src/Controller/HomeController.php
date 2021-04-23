@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CarroRepository;
 
-
-
 class HomeController extends AbstractController
 {
     /**
