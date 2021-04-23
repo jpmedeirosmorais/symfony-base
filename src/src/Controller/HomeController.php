@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Carro;
+use App\Form\CarroType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,9 +22,10 @@ class HomeController extends AbstractController
     {
         
         $carros = $carroRepository->findAll();
-
+        $form = $this->createForm(CarroType::class);
         return $this->render('home/index.html.twig', [
-            "carros" => $carros
+            "carros" => $carros,
+            "formCarro" => $form->createView()
         ]);
     }
 
@@ -33,20 +35,17 @@ class HomeController extends AbstractController
      */
     public function add(Request $request, CarroRepository $carroRepository)
     {
-        $marca = $request->get('marca');
-        $modelo = $request->get('modelo');
-        $preco = $request->get('preco');
-        if($marca == "" || $modelo == "" || $preco == "")
-        {
-            $this->addFlash("message", "Pro favor não deixe nenhum campo vazio.");
-            return $this->redirectToRoute("home");
-        }else {
-            $carro = new Carro($marca, $modelo, $preco);
+            $form = $this->createForm(CarroType::class);
+            $form->handleRequest($request);
+            $carro = $form->getData();
+            dump($carro);
+            exit;
             $carroRepository->save($carro);
+
+
 
             $this->addFlash("message", "Ok, deu certo");
             return $this->redirectToRoute("home");
-        }
     }
 
     /**
