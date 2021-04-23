@@ -25,12 +25,24 @@ class Carro
     /**
      * @ORM\Column(type = "string" , nullable=false)
      * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 20,
+     *      minMessage = "Digite um nome de marca com no minimo {{ limit }} caracteres.",
+     *      maxMessage = "Digite um nome de marca com no máximo {{ limit }} caracteres."
+     * )
      */
     private string $marca;
 
     /**
      * @ORM\Column(type = "string" , nullable=false)
      * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 20,
+     *      minMessage = "Digite um nome de modelo com no minimo {{ limit }} caracteres.",
+     *      maxMessage = "Digite um nome de modelo com no máximo {{ limit }} caracteres."
+     * )
      */
     private string $modelo;
 
