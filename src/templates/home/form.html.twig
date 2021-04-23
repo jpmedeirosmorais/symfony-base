@@ -66,22 +66,9 @@
         {{ message }}
     </h2>
 {% endfor %}
-<form action="{{ path('editar_save', { 'id' : carro.id }) }}" method="post">
-    <div>
-        <label>Marca do carro</label>
-        <input type="text" name="marca" value="{{ carro.marca }}"/>
-    </div>
-    <div>
-        <label>Modelo do carro</label>
-        <input type="text" name="modelo" value="{{ carro.modelo }}"/>
-    </div>
-    <div>
-        <label>Preço do carro</label>
-        <input type="number" step="0.01" name="preco"  value="{{ carro.preco }}"/>
-    </div>
-    <div>
-        <input type="submit" value="Editar"/>
-    </div>
-</form>
+    {{ form_start (formCarro, {'action':path('editar_save',{'id':carro.id})}) }}
+    {{ form_widget (formCarro) }}
+    <input type="submit" value="Editar dados"/>
+    {{ form_end(formCarro) }}
 </body>
 </html>

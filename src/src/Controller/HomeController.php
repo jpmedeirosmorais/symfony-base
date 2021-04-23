@@ -38,11 +38,8 @@ class HomeController extends AbstractController
             $form = $this->createForm(CarroType::class);
             $form->handleRequest($request);
             $carro = $form->getData();
-            dump($carro);
-            exit;
+
             $carroRepository->save($carro);
-
-
 
             $this->addFlash("message", "Ok, deu certo");
             return $this->redirectToRoute("home");
@@ -54,33 +51,27 @@ class HomeController extends AbstractController
 
     public function editar(Carro $carro): Response
     {
+        $form = $this->createForm(CarroType::class, $carro);
         return $this->render('home/form.html.twig', [
-            "carro"=>$carro
+            "carro"=>$carro,
+            "formCarro" => $form->createView()
         ]);
+
     }
     /**
      * @Route("/editar/save/{id}", name="editar_save")
      */
     public function salvarEdicao(Request $request, Carro $carro,CarroRepository $carroRepository): Response
     {
-        $marca=$request->get('marca');
-        $modelo=$request->get('modelo');
-        $preco=$request->get('preco');
 
+        $form = $this->createForm(CarroType::class, $carro);
+        $form->handleRequest($request);
+        $carro = $form->getData();
 
-        if($marca == "" || $modelo == "" || $preco == "")
-        {
-            $this->addFlash("message", "Pro favor não deixe nenhum campo vazio.");
-            return $this->redirectToRoute("home");
-        }else
-        {
-            $carro->setMarca($marca);
-            $carro->setModelo($modelo);
-            $carro->setPreco($preco);
+        $carroRepository->save($carro);
 
-            $this->addFlash("message", "Carro editado com sucesso.");
-            return $this->redirectToRoute("home");
-        }
+        $this->addFlash("message", "Carro editado com sucesso.");
+        return $this->redirectToRoute("home");
 
     }
 
