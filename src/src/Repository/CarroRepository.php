@@ -2,11 +2,9 @@
 
 namespace App\Repository;
 
-
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;  
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Carro;
-
 
 class CarroRepository extends ServiceEntityRepository
 {

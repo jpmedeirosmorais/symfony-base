@@ -60,15 +60,16 @@
         }
     </style>
 </head>
-{% for message in app.flashes('message') %}
-    <h2>
-        {{message}}
-    </h2>
-{% endfor %}
-{{ form_start(formCarro, {'action':path('add')}) }}
-{{ form_widget(formCarro) }}
-<input type="submit" value="Salvar carro" />
-{{ form_end(formCarro) }}
+    {% for message in app.flashes('message') %}
+        <h2>
+            {{message}}
+        </h2>
+    {% endfor %}
+    {{ form_start(formCarro, {'action':path('add')}) }}
+        {{ form_errors(formCarro) }}
+        {{ form_widget(formCarro) }}
+        <input type="submit" value="Salvar carro" />
+    {{ form_end(formCarro) }}
     <table>
         <thead>
             <tr>

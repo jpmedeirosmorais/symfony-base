@@ -35,14 +35,21 @@ class HomeController extends AbstractController
      */
     public function add(Request $request, CarroRepository $carroRepository)
     {
-            $form = $this->createForm(CarroType::class);
-            $form->handleRequest($request);
-            $carro = $form->getData();
+        $carros = $carroRepository->findAll();
+        $form = $this->createForm(CarroType::class);
+        $form->handleRequest($request);
+        $carro = $form->getData();
 
+        if($form->isValid()){
             $carroRepository->save($carro);
-
             $this->addFlash("message", "Ok, deu certo");
             return $this->redirectToRoute("home");
+        }else{
+            return $this->render('home/index.html.twig', [
+                "carros" => $carros,
+                "formCarro" => $form->createView()
+            ]);
+        }
     }
 
     /**
@@ -68,10 +75,18 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
         $carro = $form->getData();
 
-        $carroRepository->save($carro);
+        if($form->isValid()){
+            $carroRepository->save($carro);
+            $this->addFlash("message", "Carro editado com sucesso.");
+            return $this->redirectToRoute("home");
+        }else{
+            return $this->render('home/form.html.twig', [
+                "carro"=>$carro,
+                "formCarro" => $form->createView()
+            ]);
+        }
 
-        $this->addFlash("message", "Carro editado com sucesso.");
-        return $this->redirectToRoute("home");
+
 
     }
 

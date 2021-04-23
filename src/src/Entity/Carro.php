@@ -4,6 +4,8 @@
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CarroRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass = CarroRepository::class)
@@ -20,17 +22,29 @@ class Carro
      */
     private int $id;
 
-    /** @ORM\Column(type = "string" , nullable=false) */
+    /**
+     * @ORM\Column(type = "string" , nullable=false)
+     * @Assert\NotBlank
+     */
     private string $marca;
 
-    /** @ORM\Column(type = "string" , nullable=false) */
+    /**
+     * @ORM\Column(type = "string" , nullable=false)
+     * @Assert\NotBlank
+     */
     private string $modelo;
 
-    /** @ORM\Column(type = "decimal", scale =2, nullable=false) */
+    /**
+     * @ORM\Column(type = "decimal", scale =2, nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Positive
+     * @Assert\Range(
+     *      min = 1000,
+     *      max = 1000000,
+     *      notInRangeMessage = "Você precisa inserir um valor minímo de R${{ min }},00 e no máximo de R${{ max }},00.",
+     * )
+     */
     private float $preco;
-
-
-
 
     /**
      * @return string
