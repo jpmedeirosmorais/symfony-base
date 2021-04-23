@@ -29,20 +29,8 @@ class Carro
     /** @ORM\Column(type = "decimal", scale =2, nullable=false) */
     private float $preco;
 
-    /**
-     * Livro constructor.
-     * @param string $marca
-     * @param string $modelo
-     * @param float $preco
-     */
 
 
-    public function __construct(string $marca, string $modelo, float $preco)
-    {
-        $this->marca = $marca;
-        $this->modelo = $modelo;
-        $this->preco = $preco;
-    }
 
     /**
      * @return string
