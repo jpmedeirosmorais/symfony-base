@@ -1,65 +1,11 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carros mais baratos -por mais que pareça mentira- do Brasil</title>
-    <style>
-        tr td:first-child { text-align: left; }
-        body { background-color: #808080	;
-            color: white; }
-        form, table {
-            width: 50%;
-            margin: auto;
-            border: 1px solid #808080	;
-            padding: 50px;
-            box-sizing: border-box;
-            border-radius: 10px;
-        }
-        form > div {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            justify-content: center;
-            margin: 10px;
-        }
-        form > div > label {
-            font-size: 18pt;
-        }
-        form > div > input {
-            margin-top: 15px;
-            font-size: 18pt;
-            padding: 5px 10px;
-        }
-        table {
-            margin-top: 15px;
-        }
-        #submit{
-            background: #000000		;
-            color: #fff;
-        }
-        thead th {
-            background: #000000	;
-            color: #fff;
-        }
-        td{
-            background: #000000	;
-            color: #fff;
-        }
-        tbody > tr > td{
-            float: contour;
-        }
-        a{
-            text-decoration: none;
-            color: white;
-        }
-        a:hover{
-            color: grey;
-        }
-    </style>
-</head>
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+
+<h1>Homepage</h1>
+
     {% for message in app.flashes('message') %}
         <h2>
             {{message}}
@@ -93,5 +39,5 @@
             {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+
+{% endblock %}

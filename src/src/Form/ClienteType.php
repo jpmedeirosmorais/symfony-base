@@ -2,10 +2,12 @@
 
 namespace App\Form;
 
+//use DateTime;
 use App\Entity\Cliente;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ClienteType extends AbstractType
 {
@@ -14,7 +16,7 @@ class ClienteType extends AbstractType
         $builder
             ->add('nome')
             ->add('cpf')
-            ->add('nascimento')
+            ->add('nascimento', DateType::class, ['years' => range(1900, 2021)])
             ->add('saldo')
         ;
     }

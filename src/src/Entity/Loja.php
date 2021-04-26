@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\LojaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=LojaRepository::class)
+ * @UniqueEntity("nomeFantasia")
  */
 class Loja
 {
@@ -18,12 +23,14 @@ class Loja
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique = true)
+     * @Assert\NotBlank
      */
     private $nomeFantasia;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $dono;
 

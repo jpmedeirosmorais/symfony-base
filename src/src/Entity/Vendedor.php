@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\VendedorRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=VendedorRepository::class)
+ * @UniqueEntity("cpf")
  */
 class Vendedor
 {
@@ -19,21 +24,31 @@ class Vendedor
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $nome;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 14,
+     *      max = 14,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $cpf;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", unique = true)
+     * @Assert\NotBlank
      */
     private $nascimento;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank
      */
     private $comissao;
 

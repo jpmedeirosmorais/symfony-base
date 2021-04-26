@@ -22,7 +22,7 @@
                 <td>{{ cliente.id }}</td>
                 <td>{{ cliente.nome }}</td>
                 <td>{{ cliente.cpf }}</td>
-                <td>{{ cliente.nascimento ? cliente.nascimento|date('Y-m-d') : '' }}</td>
+                <td>{{ cliente.nascimento ? cliente.nascimento|date('d-m-Y') : '' }}</td>
                 <td>{{ cliente.saldo }}</td>
                 <td>
                     <a href="{{ path('cliente_show', {'id': cliente.id}) }}">show</a>

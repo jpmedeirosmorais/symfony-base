@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vendedor index{% endblock %}
+{% block title %}Vendedor{% endblock %}
 
 {% block body %}
-    <h1>Vendedor index</h1>
+    <h1>Vendedor</h1>
 
     <table class="table">
         <thead>
@@ -22,7 +22,7 @@
                 <td>{{ vendedor.id }}</td>
                 <td>{{ vendedor.nome }}</td>
                 <td>{{ vendedor.cpf }}</td>
-                <td>{{ vendedor.nascimento ? vendedor.nascimento|date('Y-m-d') : '' }}</td>
+                <td>{{ vendedor.nascimento ? vendedor.nascimento|date('d-m-Y') : '' }}</td>
                 <td>{{ vendedor.comissao }}</td>
                 <td>
                     <a href="{{ path('vendedor_show', {'id': vendedor.id}) }}">show</a>
