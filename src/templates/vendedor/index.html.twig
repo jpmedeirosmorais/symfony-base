@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vendedor index{% endblock %}
+
+{% block body %}
+    <h1>Vendedor index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cpf</th>
+                <th>Nascimento</th>
+                <th>Comissao</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vendedor in vendedors %}
+            <tr>
+                <td>{{ vendedor.id }}</td>
+                <td>{{ vendedor.nome }}</td>
+                <td>{{ vendedor.cpf }}</td>
+                <td>{{ vendedor.nascimento ? vendedor.nascimento|date('Y-m-d') : '' }}</td>
+                <td>{{ vendedor.comissao }}</td>
+                <td>
+                    <a href="{{ path('vendedor_show', {'id': vendedor.id}) }}">show</a>
+                    <a href="{{ path('vendedor_edit', {'id': vendedor.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vendedor_new') }}">Create new</a>
+{% endblock %}
