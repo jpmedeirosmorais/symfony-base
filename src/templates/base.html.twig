@@ -7,7 +7,17 @@
         <a href="/loja"><button>Loja</button></a>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <style>
+                a{
+                    color: blue;
+                    text-decoration:none;
+                }
+                a:hover{
+                    color: grey;
+                }
+            </style>
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}

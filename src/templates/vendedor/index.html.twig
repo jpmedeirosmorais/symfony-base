@@ -25,17 +25,17 @@
                 <td>{{ vendedor.nascimento ? vendedor.nascimento|date('d-m-Y') : '' }}</td>
                 <td>{{ vendedor.comissao }}</td>
                 <td>
-                    <a href="{{ path('vendedor_show', {'id': vendedor.id}) }}">show</a>
-                    <a href="{{ path('vendedor_edit', {'id': vendedor.id}) }}">edit</a>
+                    <a href="{{ path('vendedor_show', {'id': vendedor.id}) }}">Mostrar</a>
+                    <a href="{{ path('vendedor_edit', {'id': vendedor.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Nenhum vendedor cadastrado</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('vendedor_new') }}">Create new</a>
+    <a href="{{ path('vendedor_new') }}">Criar novo vendedor</a>
 {% endblock %}

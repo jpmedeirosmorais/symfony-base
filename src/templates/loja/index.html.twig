@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Loja index{% endblock %}
+{% block title %}Loja{% endblock %}
 
 {% block body %}
-    <h1>Loja index</h1>
+    <h1>Loja</h1>
 
     <table class="table">
         <thead>
@@ -27,11 +27,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Nenhuma Loja cadastrada</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('loja_new') }}">Create new</a>
+    <a href="{{ path('loja_new') }}">Criar uma loja nova</a>
 {% endblock %}
